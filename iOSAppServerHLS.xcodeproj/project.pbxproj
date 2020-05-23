@@ -15,6 +15,8 @@
 		55F05F392479904F00CEF6CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F05F372479904F00CEF6CA /* LaunchScreen.storyboard */; };
 		55F05F442479904F00CEF6CA /* iOSAppServerHLSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F05F432479904F00CEF6CA /* iOSAppServerHLSTests.swift */; };
 		55F05F4F2479904F00CEF6CA /* iOSAppServerHLSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F05F4E2479904F00CEF6CA /* iOSAppServerHLSUITests.swift */; };
+		55F05F5E2479916800CEF6CA /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F05F5D2479916700CEF6CA /* GCDWebServers.framework */; };
+		55F05F8B24799D7F00CEF6CA /* HLSDatas in Resources */ = {isa = PBXBuildFile; fileRef = 55F05F8A24799D7F00CEF6CA /* HLSDatas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		55F05F4A2479904F00CEF6CA /* iOSAppServerHLSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppServerHLSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F05F4E2479904F00CEF6CA /* iOSAppServerHLSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppServerHLSUITests.swift; sourceTree = "<group>"; };
 		55F05F502479904F00CEF6CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55F05F5D2479916700CEF6CA /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = Carthage/Build/iOS/GCDWebServers.framework; sourceTree = "<group>"; };
+		55F05F8A24799D7F00CEF6CA /* HLSDatas */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HLSDatas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F05F5E2479916800CEF6CA /* GCDWebServers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +84,12 @@
 		55F05F202479904D00CEF6CA = {
 			isa = PBXGroup;
 			children = (
+				55F05F8A24799D7F00CEF6CA /* HLSDatas */,
 				55F05F2B2479904D00CEF6CA /* iOSAppServerHLS */,
 				55F05F422479904F00CEF6CA /* iOSAppServerHLSTests */,
 				55F05F4D2479904F00CEF6CA /* iOSAppServerHLSUITests */,
 				55F05F2A2479904D00CEF6CA /* Products */,
+				55F05F5C2479916700CEF6CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +135,14 @@
 			path = iOSAppServerHLSUITests;
 			sourceTree = "<group>";
 		};
+		55F05F5C2479916700CEF6CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55F05F5D2479916700CEF6CA /* GCDWebServers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +153,7 @@
 				55F05F252479904D00CEF6CA /* Sources */,
 				55F05F262479904D00CEF6CA /* Frameworks */,
 				55F05F272479904D00CEF6CA /* Resources */,
+				55F05F5F2479917300CEF6CA /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -232,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F05F8B24799D7F00CEF6CA /* HLSDatas in Resources */,
 				55F05F392479904F00CEF6CA /* LaunchScreen.storyboard in Resources */,
 				55F05F362479904F00CEF6CA /* Assets.xcassets in Resources */,
 				55F05F342479904D00CEF6CA /* Main.storyboard in Resources */,
@@ -253,6 +270,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55F05F5F2479917300CEF6CA /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/GCDWebServers.framework",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55F05F252479904D00CEF6CA /* Sources */ = {
@@ -436,6 +475,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BTZN69U72;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSAppServerHLS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,6 +497,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BTZN69U72;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSAppServerHLS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
